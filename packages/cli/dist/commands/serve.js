@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.serveCommand = void 0;
 const path_1 = __importDefault(require("path"));
 const commander_1 = require("commander");
-const local_api_1 = require("local-api");
+const local_api_1 = require("@ts-bas-cli/local-api");
 const isProduction = process.env.NODE_ENV === "production";
 // const isProduction = true; // cos 'createProxyMiddleware' doesn't work for 'localhost', but works for '127.0.0.1'
 exports.serveCommand = new commander_1.Command()

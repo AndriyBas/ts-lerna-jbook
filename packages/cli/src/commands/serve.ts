@@ -1,6 +1,6 @@
 import path from "path";
 import { Command } from "commander";
-import { serve } from "local-api";
+import { serve } from "@ts-bas-cli/local-api";
 
 const isProduction = process.env.NODE_ENV === "production";
 // const isProduction = true; // cos 'createProxyMiddleware' doesn't work for 'localhost', but works for '127.0.0.1'
