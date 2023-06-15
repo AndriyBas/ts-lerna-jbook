@@ -1,5 +1,5 @@
 import { ActionType } from "../action-types";
-import { CellType } from "../cell";
+import { Cell, CellType } from "../cell";
 
 export interface MoveCellAction {
   type: ActionType.MoveCell;
@@ -48,12 +48,35 @@ export interface BundleCompleteAction {
   };
 }
 
+export interface FetchCellsAction {
+  type: ActionType.FetchCells;
+}
+
+export interface FetchCellsCompleteAction {
+  type: ActionType.FetchCellsComplete;
+  payload: Cell[];
+}
+
+export interface FetchCellsErrorAction {
+  type: ActionType.FetchCellsError;
+  payload: string;
+}
+
+export interface SaveCellsErrorAction {
+  type: ActionType.SaveCellsError;
+  payload: string;
+}
+
 export type Action =
   | MoveCellAction
   | DeleteCellAction
   | InsertCellAfterAction
   | UpdateCellAction
   | BundleStartAction
-  | BundleCompleteAction;
+  | BundleCompleteAction
+  | FetchCellsAction
+  | FetchCellsCompleteAction
+  | FetchCellsErrorAction
+  | SaveCellsErrorAction;
 
 export type Direction = "up" | "down";

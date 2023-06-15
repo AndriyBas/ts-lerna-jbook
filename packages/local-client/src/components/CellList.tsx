@@ -3,12 +3,23 @@ import { useTypedSelector } from "../hooks/useTypedSelector";
 import CellListItem from "./CellListItem";
 import AddCell from "./AddCell";
 import "./CellList.css";
+import { useActions } from "../hooks/useActions";
 
 const CellList: React.FC = () => {
   const cells = useTypedSelector(({ cells }) => {
     if (!cells) return [];
     return cells.order.map((id) => cells.data[id]);
   });
+  const { fetchCells } = useActions();
+
+  React.useEffect(() => {
+    fetchCells();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // React.useEffect(() => {
+  //   saveCells();
+  // }, [JSON.stringify(cells)]);
 
   return (
     <div className="cell-list">
