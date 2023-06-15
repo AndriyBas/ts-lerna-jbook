@@ -16,6 +16,8 @@ exports.serveCommand = void 0;
 const path_1 = __importDefault(require("path"));
 const commander_1 = require("commander");
 const local_api_1 = require("local-api");
+const isProduction = process.env.NODE_ENV === "production";
+// const isProduction = true; // cos 'createProxyMiddleware' doesn't work for 'localhost', but works for '127.0.0.1'
 exports.serveCommand = new commander_1.Command()
     .command("serve [filename]")
     .description("Open a file for editing")
@@ -31,7 +33,7 @@ exports.serveCommand = new commander_1.Command()
         const baseFilename = path_1.default.basename(filename);
         // console.log(dir);
         // console.log(baseFilename);
-        yield (0, local_api_1.serve)(port, baseFilename, dir);
+        yield (0, local_api_1.serve)(port, baseFilename, dir, !isProduction);
         console.log(`Opened ${filename}. Navigate to http://localhost:${port}`);
     }
     catch (error) {

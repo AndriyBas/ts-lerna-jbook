@@ -2,6 +2,9 @@ import path from "path";
 import { Command } from "commander";
 import { serve } from "local-api";
 
+const isProduction = process.env.NODE_ENV === "production";
+// const isProduction = true; // cos 'createProxyMiddleware' doesn't work for 'localhost', but works for '127.0.0.1'
+
 export const serveCommand = new Command()
   .command("serve [filename]")
   .description("Open a file for editing")
@@ -18,7 +21,7 @@ export const serveCommand = new Command()
         const baseFilename = path.basename(filename);
         // console.log(dir);
         // console.log(baseFilename);
-        await serve(port, baseFilename, dir);
+        await serve(port, baseFilename, dir, !isProduction);
         console.log(`Opened ${filename}. Navigate to http://localhost:${port}`);
       } catch (error: any) {
         if (error.code === "EADDRINUSE") {
