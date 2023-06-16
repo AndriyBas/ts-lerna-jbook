@@ -17,12 +17,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@ts-bas-cli/local-client": "^0.1.0"
+    "@ts-bas-cli/local-client": "^1.0.0"
   },
   "devDependencies": {
-    "commander": "^10.0.1",
     "@ts-bas-cli/local-api": "^1.0.0",
     "@types/node": "^20.3.1",
+    "commander": "^10.0.1",
     "esbuild": "0.8.26",
     "typescript": "^5.1.3"
   }
